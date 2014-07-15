@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FastDFS.Client.Common;
 using FastDFS.Client.Config;
 
@@ -21,7 +17,7 @@ namespace FastDFS.Client.Demo
 
             do
             {
-                Console.WriteLine("1.Init");
+                Console.WriteLine("\r\n1.Init");
                 Console.WriteLine("2.GetStorageNode");
                 Console.WriteLine("3.UploadFile");
                 Console.WriteLine("4.RemoveFile");

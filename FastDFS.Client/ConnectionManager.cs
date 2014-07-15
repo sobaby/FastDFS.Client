@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using FastDFS.Client.Common;
 using FastDFS.Client.Config;
 
@@ -78,7 +80,7 @@ namespace FastDFS.Client
 
             return StorePools[endPoint].GetConnection();
         }
-
+        
         #endregion
     }
 }

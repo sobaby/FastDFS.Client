@@ -7,7 +7,9 @@ namespace FastDFS.Client.Common
         #region 公共属性
 
         public FDFSHeader Header { get; set; }
+
         public byte[] Body { get; set; }
+
         public Connection Connection { get; set; }
 
         #endregion

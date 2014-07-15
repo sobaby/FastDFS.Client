@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.Sockets;
 using FastDFS.Client.Common;
 
 namespace FastDFS.Client.Storage
@@ -48,12 +49,12 @@ namespace FastDFS.Client.Storage
             if (paramList.Length != 5)
                 throw new FDFSException("param count is wrong");
 
-            var endPoint = (IPEndPoint) paramList[0];
+            var endPoint = (IPEndPoint)paramList[0];
 
-            var storePathIndex = (byte) paramList[1];
-            var fileSize = (int) paramList[2];
-            var ext = (string) paramList[3];
-            var contentBuffer = (byte[]) paramList[4];
+            var storePathIndex = (byte)paramList[1];
+            var fileSize = (int)paramList[2];
+            var ext = (string)paramList[3];
+            var contentBuffer = (byte[])paramList[4];
 
             #region 拷贝后缀扩展名值
 
@@ -68,7 +69,11 @@ namespace FastDFS.Client.Storage
 
             #endregion
 
-            var result = new UPLOAD_FILE {Connection = ConnectionManager.GetStorageConnection(endPoint)};
+            var result = new UPLOAD_FILE
+            {
+                Connection = ConnectionManager.GetStorageConnection(endPoint)
+            };
+
             if (ext.Length > Consts.FDFS_FILE_EXT_NAME_MAX_LEN)
                 throw new FDFSException("file ext is too long");
 
