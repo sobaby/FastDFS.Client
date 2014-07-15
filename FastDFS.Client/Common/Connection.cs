@@ -18,7 +18,7 @@ namespace FastDFS.Client.Common
 
         public bool InUse { get; set; }
 
-        public void Open()
+        public void OpenConnection()
         {
             if (InUse)
             {
@@ -27,16 +27,23 @@ namespace FastDFS.Client.Common
 
             InUse = true;
             LastUseTime = DateTime.Now;
+
+            //如果连接处于关闭状态，则重新打开连接管道
+            if (Connected == false)
+            {
+                Connect(Pool.IpEndPoint);
+            }
         }
 
-        public new void Close()
+        public void CloseConnection()
         {
             Pool.CloseConnection(this);
         }
 
-        public void Release()
+        public void ReleaseConnection()
         {
             Pool.ReleaseConnection(this);
+            Dispose(true);
         }
     }
 }

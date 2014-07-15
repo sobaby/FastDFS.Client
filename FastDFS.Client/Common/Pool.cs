@@ -18,6 +18,11 @@ namespace FastDFS.Client.Common
         private readonly IPEndPoint _endPoint;
         private readonly int _maxConnection;
 
+        public IPEndPoint IpEndPoint
+        {
+            get { return _endPoint; }
+        }
+
         public Pool(IPEndPoint endPoint, int maxConnection)
         {
             _autoEvent = new AutoResetEvent(false);
@@ -38,7 +43,7 @@ namespace FastDFS.Client.Common
                 {
                     foreach (var conn in _idle)
                     {
-                        conn.Close();
+                        conn.CloseConnection();
                     }
                     _idle = new Stack<Connection>(_maxConnection);
                     result = null;
@@ -115,5 +120,4 @@ namespace FastDFS.Client.Common
             _autoEvent.Set();
         }
     }
-
 }

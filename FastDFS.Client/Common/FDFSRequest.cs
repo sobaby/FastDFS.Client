@@ -39,7 +39,8 @@ namespace FastDFS.Client.Common
 
             try
             {
-                Connection.Open();
+                //打开
+                Connection.OpenConnection();
 
                 var stream = Connection.GetStream();
                 var headerBuffer = Header.ToByte();
@@ -58,12 +59,13 @@ namespace FastDFS.Client.Common
             }
             catch (Exception ex)
             {
-                Connection.Release();
                 throw ex;
             }
             finally
             {
-                Connection.Close();
+                //关闭
+                //Connection.Close();
+                Connection.ReleaseConnection();
             }
         }
 
