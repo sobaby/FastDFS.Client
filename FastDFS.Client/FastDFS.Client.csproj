@@ -51,11 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CircularLinkedList.cs" />
     <Compile Include="Common\Connection.cs" />
     <Compile Include="Common\FDFSConfig.cs" />
+    <Compile Include="Exception\FdfsConnectException.cs" />
+    <Compile Include="Exception\FdfsUnavailableException.cs" />
     <Compile Include="ConnectionManager.cs" />
     <Compile Include="Common\Consts.cs" />
-    <Compile Include="Common\FDFSException.cs" />
+    <Compile Include="Exception\FDFSException.cs" />
     <Compile Include="Common\FDFSHeader.cs" />
     <Compile Include="Common\Pool.cs" />
     <Compile Include="Common\StorageNode.cs" />
@@ -63,6 +66,8 @@
     <Compile Include="Config\FastDfsConfigurationSectionHandler.cs" />
     <Compile Include="Config\FastDfsManager.cs" />
     <Compile Include="Config\FastDfsServer.cs" />
+    <Compile Include="Domain\TrackerAddressHolder.cs" />
+    <Compile Include="Domain\TrackerLocator.cs" />
     <Compile Include="FastDFSClient.cs" />
     <Compile Include="Storage\APPEND_FILE.cs" />
     <Compile Include="Storage\DELETE_FILE.cs" />
@@ -74,6 +79,7 @@
     <Compile Include="Storage\UPLOAD_APPEND_FILE.cs" />
     <Compile Include="Storage\UPLOAD_FILE.cs" />
     <Compile Include="Storage\UPLOAD_SLAVE_FILE.cs" />
+    <Compile Include="TrackerConnectionManager.cs" />
     <Compile Include="Tracker\LIST_ALL_GROUPS.cs" />
     <Compile Include="Tracker\LIST_ONE_GROUP.cs" />
     <Compile Include="Tracker\LIST_STORAGE.cs" />

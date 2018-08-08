@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace FastDFS.Client.Common
 {
@@ -32,41 +32,9 @@ namespace FastDFS.Client.Common
 
         public virtual byte[] GetResponse()
         {
-            if (Connection == null)
-            {
-                Connection = ConnectionManager.GetTrackerConnection();
-            }
+            var body = ConnectionManager.GetResponse(this);
 
-            try
-            {
-                //打开
-                Connection.OpenConnection();
-
-                var stream = Connection.GetStream();
-                var headerBuffer = Header.ToByte();
-
-                stream.Write(headerBuffer, 0, headerBuffer.Length);
-                stream.Write(Body, 0, Body.Length);
-
-                var header = new FDFSHeader(stream);
-                if (header.Status != 0)
-                    throw new FDFSException(string.Format("Get Response Error,Error Code:{0}", header.Status));
-
-                var body = new byte[header.Length];
-                if (header.Length != 0) stream.Read(body, 0, (int)header.Length);
-
-                return body;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                //关闭
-                //Connection.Close();
-                Connection.ReleaseConnection();
-            }
+            return body;
         }
 
         #endregion

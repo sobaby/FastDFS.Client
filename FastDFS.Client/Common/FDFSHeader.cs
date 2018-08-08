@@ -1,4 +1,5 @@
-﻿using System;
+using FastDFS.Client.Exception;
+using System;
 using System.IO;
 
 namespace FastDFS.Client.Common

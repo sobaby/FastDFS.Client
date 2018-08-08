@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using FastDFS.Client.Common;
+using FastDFS.Client.Exception;
 
 namespace FastDFS.Client.Storage
 {

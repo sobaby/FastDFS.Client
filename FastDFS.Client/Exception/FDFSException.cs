@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
-namespace FastDFS.Client.Common
+namespace FastDFS.Client.Exception
 {
-    public class FDFSException : Exception
+    public class FDFSException : System.Exception
     {
         public FDFSException(string msg) :
             base(msg)
