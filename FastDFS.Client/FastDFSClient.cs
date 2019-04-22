@@ -1,7 +1,9 @@
-﻿using System.Net;
+using System.Net;
 using FastDFS.Client.Common;
 using FastDFS.Client.Storage;
 using FastDFS.Client.Tracker;
+using System.Collections.Generic;
+using FastDFS.Client.Domain;
 
 namespace FastDFS.Client
 {
@@ -11,6 +13,34 @@ namespace FastDFS.Client
     public class FastDFSClient
     {
         #region 公共静态方法
+        /// <summary>
+        /// 获取存储节点
+        /// </summary>
+        /// <param name="groupName">组名</param>
+        /// <returns>存储节点实体类</returns>
+        public static List<StorageNode> GetStorageNodes(string groupName)
+        {
+            var trackerRequest = QUERY_STORE_WITH_GROUP_ALL.Instance.GetRequest(groupName);
+
+            var trackerResponse = new QUERY_STORE_WITH_GROUP_ALL.Response(trackerRequest.GetResponse());
+
+            List<StorageNode> result = new List<StorageNode>();
+            foreach (var item in trackerResponse.StorageNode)
+            {
+
+                var storeEndPoint = new IPEndPoint(IPAddress.Parse(item.IpStr), item.StoragePort);
+
+                var StorageNode = new StorageNode
+                {
+                    GroupName = trackerResponse.GroupName,
+                    EndPoint = storeEndPoint,
+                    StorePathIndex = item.StorePathIndex
+                };
+                result.Add(StorageNode);
+            }
+
+            return result;
+        }
 
         /// <summary>
         /// 获取存储节点

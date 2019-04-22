@@ -54,6 +54,8 @@
     <Compile Include="Common\CircularLinkedList.cs" />
     <Compile Include="Common\Connection.cs" />
     <Compile Include="Common\FDFSConfig.cs" />
+    <Compile Include="Domain\Storage.cs" />
+    <Compile Include="Domain\StorageState.cs" />
     <Compile Include="Exception\FdfsConnectException.cs" />
     <Compile Include="Exception\FdfsUnavailableException.cs" />
     <Compile Include="ConnectionManager.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Domain\TrackerAddressHolder.cs" />
     <Compile Include="Domain\TrackerLocator.cs" />
     <Compile Include="FastDFSClient.cs" />
+    <Compile Include="Mapper\FdfsColumn.cs" />
     <Compile Include="Storage\APPEND_FILE.cs" />
     <Compile Include="Storage\DELETE_FILE.cs" />
     <Compile Include="Storage\DOWNLOAD_FILE.cs" />
